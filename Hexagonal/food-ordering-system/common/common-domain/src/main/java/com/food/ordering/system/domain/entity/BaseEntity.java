@@ -18,11 +18,11 @@ public abstract class BaseEntity<ID> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BaseEntity<?> that = (BaseEntity<?>) o;
-        return Objects.equals(getId(), that.getId());
+        return id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 }
