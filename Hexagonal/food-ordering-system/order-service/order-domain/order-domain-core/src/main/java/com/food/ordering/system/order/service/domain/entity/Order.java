@@ -7,6 +7,7 @@ import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,6 +34,47 @@ public class Order extends AggregateRoot<OrderId> {
         validateTotalPrice();
         validateItemsPrice();
     }
+
+    public void pay(){
+        if(orderStatus != OrderStatus.PENDING){
+            throw new OrderDomainException("Order is not incorrect state for pay");
+        }
+        orderStatus = OrderStatus.PAID;
+    }
+
+    public void approve(){
+        if(orderStatus != OrderStatus.PAID){
+            throw new OrderDomainException("Order is not incorrect state for approve");
+        }
+        orderStatus = OrderStatus.APPROVED;
+    }
+
+    public void initCancel(List<String> failureMessages){ //PAID 후 승인 OR 승인거절상태중 승인거절상태
+        if(orderStatus != OrderStatus.PAID){
+            throw new OrderDomainException("Order is not incorrect state for initial cancel operation");
+        }
+        orderStatus = OrderStatus.CANCELLING;
+        updateFailureMessage(failureMessages);
+    }
+
+
+    public void cancel(List<String> failureMessages){ //애초부터 승인 취소(= 결제 취소)
+        if(!(orderStatus != OrderStatus.CANCELLING || orderStatus != OrderStatus.PENDING)){
+            throw new OrderDomainException("Order is not incorrect state for cancel operation");
+        }
+        orderStatus = OrderStatus.CANCELLED;
+        updateFailureMessage(failureMessages);
+    }
+
+    private void updateFailureMessage(List<String> failureMessages) {
+        if(this.failureMessages != null && failureMessages != null){
+            this.failureMessages.addAll(failureMessages.stream().filter(message -> !message.isEmpty()).toList());
+        }
+        if(this.failureMessages == null){
+            this.failureMessages = failureMessages;
+        }
+    }
+
 
     private void validateInitialOrder() {
         if (orderStatus != null || getId() != null){
