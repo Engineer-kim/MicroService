@@ -34,7 +34,7 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
             });
         } catch (Exception ex) {
             log.error("Error on kafka producer with key: {}, message: {}", key, message, ex);
-            throw new KafkaProducerException("Kafka 메시지를 처리하는 데 실패했습니다. 키: " + key + ", 메시지: " + message + ", 오류: " + ex.getMessage());
+            throw new KafkaProducerException("Kafka 메시지를 처리하는 데 실패했습니다. 오류난 래 이유: " + ex.getMessage());
         }
     }
 
