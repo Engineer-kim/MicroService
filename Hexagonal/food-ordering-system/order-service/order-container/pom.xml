@@ -44,6 +44,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.14.2</version> <!-- 안정적인 버전 사용 -->
+            <scope>test</scope> <!-- 테스트 범위로 설정 -->
+        </dependency>
     </dependencies>
 
     <build>
