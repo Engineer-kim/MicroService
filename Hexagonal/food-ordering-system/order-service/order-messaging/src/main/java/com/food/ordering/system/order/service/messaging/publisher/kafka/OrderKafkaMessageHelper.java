@@ -10,14 +10,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderKafkaMessageHelper {
 
-    public void getKafkaCallBack(SendResult<String, PaymentRequestAvroModel> result, Throwable exception) {
+    public <T> void getKafkaCallBack(SendResult<String, T> result, Throwable exception ,String orderId) {
         if (exception != null) {
             // 실패 처리
             log.error("Error sending message to Kafka: {}", exception.getMessage());
         } else {
             //성공일떄는
             RecordMetadata metadata = result.getRecordMetadata();
-            log.info("Message sent to Kafka successfully for  Topic: {}, Partition: {}, Offset: {}",
+            log.info("Message sent to Kafka successfully for OrderId : {},  Topic: {}, Partition: {}, Offset: {}",
+                    orderId,
                     metadata.topic(),
                     metadata.partition(),
                     metadata.offset());
