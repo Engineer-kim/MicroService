@@ -33,6 +33,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
     @Override
     public void publish(OrderCancelledEvent domainEvent) {
 
+        //메시지키
         String orderId = domainEvent.getOrder().getId().getValue().toString();
 
         PaymentRequestAvroModel paymentRequestAvroModel = orderMessagingDataMapper
