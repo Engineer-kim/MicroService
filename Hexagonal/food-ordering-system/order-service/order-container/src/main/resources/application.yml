@@ -29,38 +29,38 @@ spring:
     initialization-mode: always
 
 kafka-config:
-  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
-  schema-registry-url-key: schema.registry.url
-  schema-registry-url: http://localhost:8081
-  num-of-partitions: 3
-  replication-factor: 3
+  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092 # 카프카 브로커의 주소 (여러 개 가능)
+  schema-registry-url-key: schema.registry.url # 스키마 레지스트리 URL 키
+  schema-registry-url: http://localhost:8081 # 스키마 레지스트리의 URL
+  num-of-partitions: 3 # 기본 파티션 수
+  replication-factor: 3 # 복제 계수 (데이터의 복제 수)
 
 kafka-producer-config:
-  key-serializer-class: org.apache.kafka.common.serialization.StringSerializer
-  value-serializer-class: io.confluent.kafka.serializers.KafkaAvroSerializer
-  compression-type: snappy
-  acks: all
-  batch-size: 16384
-  batch-size-boost-factor: 100
-  linger-ms: 5
-  request-timeout-ms: 60000
-  retry-count: 5
+  key-serializer-class: org.apache.kafka.common.serialization.StringSerializer # 키 직렬화 클래스
+  value-serializer-class: io.confluent.kafka.serializers.KafkaAvroSerializer # 값 직렬화 클래스 (Avro 사용)
+  compression-type: snappy # 데이터 압축 유형
+  acks: all # 모든 복제 브로커가 데이터 수신을 확인해야 함
+  batch-size: 16384 # 배치 크기 (바이트 단위)
+  batch-size-boost-factor: 100 # 배치 크기 부스트 팩터
+  linger-ms: 5 # 메시지가 배치에 추가될 때까지 대기하는 시간 (밀리초 단위)
+  request-timeout-ms: 60000 # 요청 타임아웃 시간 (밀리초 단위)
+  retry-count: 5 # 실패 시 재시도 횟수
 
 kafka-consumer-config:
-  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-  value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-  payment-consumer-group-id: payment-topic-consumer
-  restaurant-approval-consumer-group-id: restaurant-approval-topic-consumer
-  auto-offset-reset: earliest
-  specific-avro-reader-key: specific.avro.reader
-  specific-avro-reader: true
-  batch-listener: true
-  auto-startup: true
-  concurrency-level: 3
-  session-timeout-ms: 10000
-  heartbeat-interval-ms: 3000
-  max-poll-interval-ms: 300000
-  max-poll-records: 500
-  max-partition-fetch-bytes-default: 1048576
-  max-partition-fetch-bytes-boost-factor: 1
-  poll-timeout-ms: 150
+  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 키 역직렬화 클래스
+  value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer # 값 역직렬화 클래스 (Avro 사용)
+  payment-consumer-group-id: payment-topic-consumer # 결제 관련 소비자 그룹 ID
+  restaurant-approval-consumer-group-id: restaurant-approval-topic-consumer # 식당 승인 관련 소비자 그룹 ID
+  auto-offset-reset: earliest # 오프셋 초기화 전략 (가장 오래된 메시지부터 시작)
+  specific-avro-reader-key: specific.avro.reader # 구체적인 Avro 리더 키 설정
+  specific-avro-reader: true # 구체적인 Avro 리더 사용 여부
+  batch-listener: true # 배치 리스너 사용 여부
+  auto-startup: true # 자동 시작 여부
+  concurrency-level: 3 # 동시성 수준
+  session-timeout-ms: 10000 # 세션 타임아웃 시간 (밀리초 단위)
+  heartbeat-interval-ms: 3000 # 하트비트 간격 (밀리초 단위)
+  max-poll-interval-ms: 300000 # 최대 폴 간격 (밀리초 단위)
+  max-poll-records: 500 # 한 번의 폴로 가져올 최대 레코드 수
+  max-partition-fetch-bytes-default: 1048576 # 기본 최대 파티션 가져오기 바이트 수
+  max-partition-fetch-bytes-boost-factor: 1 # 최대 파티션 가져오기 바이트 부스트 팩터
+  poll-timeout-ms: 150 # 폴 타임아웃 시간 (밀리초 단위)
