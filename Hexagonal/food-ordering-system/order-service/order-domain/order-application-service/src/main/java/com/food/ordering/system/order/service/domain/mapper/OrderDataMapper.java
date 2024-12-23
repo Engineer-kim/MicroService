@@ -11,7 +11,8 @@ import com.food.ordering.system.order.service.domain.dto.message.CustomerModel;
 import com.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
 import com.food.ordering.system.order.service.domain.entity.*;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
-import jakarta.validation.constraints.NotNull;
+
+import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
