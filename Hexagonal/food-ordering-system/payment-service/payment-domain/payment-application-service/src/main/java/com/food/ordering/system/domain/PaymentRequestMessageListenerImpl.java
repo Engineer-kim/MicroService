@@ -43,14 +43,14 @@ public class PaymentRequestMessageListenerImpl implements PaymentRequestMessageL
     }
 
     private void fireEvent(PaymentEvent paymentEvent) {
-        if(paymentEvent instanceof PaymentCompletedEvent) {
-            paymentCompletedMessagePublisher.publish((PaymentCompletedEvent) paymentEvent);
-        }
-        else if(paymentEvent instanceof PaymentCancelledEvent) {
-            paymentCancelledMessagePublisher.publish((PaymentCancelledEvent) paymentEvent);
-        } else if(paymentEvent instanceof PaymentFailedEvent) {
-            paymentFailedMessagePublisher.publish((PaymentFailedEvent) paymentEvent);
-        }
+        paymentEvent.fire();
+//        if(paymentEvent instanceof PaymentCompletedEvent) {
+//            paymentCompletedMessagePublisher.publish((PaymentCompletedEvent) paymentEvent);
+//        } else if(paymentEvent instanceof PaymentCancelledEvent) {
+//            paymentCancelledMessagePublisher.publish((PaymentCancelledEvent) paymentEvent);
+//        } else if(paymentEvent instanceof PaymentFailedEvent) {
+//            paymentFailedMessagePublisher.publish((PaymentFailedEvent) paymentEvent);
+//        }
     }
 }
 
