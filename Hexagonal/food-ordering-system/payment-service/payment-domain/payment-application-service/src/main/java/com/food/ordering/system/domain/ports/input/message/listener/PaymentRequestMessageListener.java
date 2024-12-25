@@ -4,7 +4,7 @@ import com.food.ordering.system.domain.dto.PaymentRequest;
 
 public interface PaymentRequestMessageListener {
 
-    void completeRequest(PaymentRequest paymentRequest);
+    void completePayment(PaymentRequest paymentRequest);
 
     void cancelPayment(PaymentRequest paymentRequest);
 }
