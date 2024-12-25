@@ -16,6 +16,7 @@ public class Product extends BaseEntity<ProductId> {
         this.available = available;
     }
 
+    // 빌더 패턴을 사용하여 Product 객체를  실제로 생성하는 생성자  ==> 실제로 프로덕트의 각필드 초기화 부문
     private Product(Builder builder) {
         setId(builder.productId);
         name = builder.name;
@@ -24,6 +25,7 @@ public class Product extends BaseEntity<ProductId> {
         available = builder.available;
     }
 
+    // 빌더 객체를 생성하는 정적 메서드(빌더 패턴을 사용하여 객체를 생성하는 데 도움을 주는 역할)
     public static Builder builder() {
         return new Builder();
     }
@@ -44,6 +46,7 @@ public class Product extends BaseEntity<ProductId> {
         return available;
     }
 
+    // Product 객체를 생성하기 위한 Builder 클래스 (프로덕트 빌더를 생성) ==> build() 메서드를 호출하여 완료 시키는거
     public static final class Builder {
         private ProductId productId;
         private String name;
