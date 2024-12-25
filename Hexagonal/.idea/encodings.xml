@@ -33,6 +33,15 @@
     <file url="file://$PROJECT_DIR$/food-ordering-system/payment-service/payment-messaging/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/payment-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/payment-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/restaurant-container/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/restaurant-dataaccess/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/restaurant-domain/restaurant-application-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/restaurant-domain/restaurant-domain-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/restaurant-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/restaurant-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/restaurant-messaging/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/restaurant-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/src/main/resources" charset="UTF-8" />
   </component>
