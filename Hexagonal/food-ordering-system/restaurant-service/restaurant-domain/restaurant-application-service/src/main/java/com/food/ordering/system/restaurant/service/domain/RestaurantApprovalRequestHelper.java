@@ -6,8 +6,7 @@ import com.food.ordering.system.restaurant.service.domain.entity.Restaurant;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovalEvent;
 import com.food.ordering.system.restaurant.service.domain.exception.RestaurantNotFoundException;
 import com.food.ordering.system.restaurant.service.domain.mapper.RestaurantDataMapper;
-import com.food.ordering.system.restaurant.service.domain.ports.input.message.listener.RestaurantApprovalRequestMessageListener;
-import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.RestaurantApprovedMessagePublisher;
+import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderApprovedMessagePublisher;
 import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.RestaurantRejectedMessagePublisher;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.OrderApprovalRepository;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.RestaurantRepository;
@@ -28,14 +27,14 @@ public class RestaurantApprovalRequestHelper {
     private final RestaurantDataMapper restaurantDataMapper;
     private final RestaurantRepository restaurantRepository;
     private final OrderApprovalRepository orderApprovalRepository;
-    private final RestaurantApprovedMessagePublisher restaurantApprovalRequestMessageListener;
+    private final OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener;
     private final RestaurantRejectedMessagePublisher restaurantRejectedMessagePublisher;
 
 
     public RestaurantApprovalRequestHelper(RestaurantDomainService restaurantDomainService,
                                            RestaurantDataMapper restaurantDataMapper,
                                            RestaurantRepository restaurantRepository,
-                                           OrderApprovalRepository orderApprovalRepository, RestaurantApprovedMessagePublisher restaurantApprovalRequestMessageListener, RestaurantRejectedMessagePublisher restaurantRejectedMessagePublisher) {
+                                           OrderApprovalRepository orderApprovalRepository, OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener, RestaurantRejectedMessagePublisher restaurantRejectedMessagePublisher) {
         this.restaurantDomainService = restaurantDomainService;
         this.restaurantDataMapper = restaurantDataMapper;
         this.restaurantRepository = restaurantRepository;
