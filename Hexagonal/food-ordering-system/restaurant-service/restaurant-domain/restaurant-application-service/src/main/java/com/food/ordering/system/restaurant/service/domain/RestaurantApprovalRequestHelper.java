@@ -7,7 +7,7 @@ import com.food.ordering.system.restaurant.service.domain.event.OrderApprovalEve
 import com.food.ordering.system.restaurant.service.domain.exception.RestaurantNotFoundException;
 import com.food.ordering.system.restaurant.service.domain.mapper.RestaurantDataMapper;
 import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderApprovedMessagePublisher;
-import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.RestaurantRejectedMessagePublisher;
+import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderRejectedMessagePublisher;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.OrderApprovalRepository;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.RestaurantRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -28,13 +28,13 @@ public class RestaurantApprovalRequestHelper {
     private final RestaurantRepository restaurantRepository;
     private final OrderApprovalRepository orderApprovalRepository;
     private final OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener;
-    private final RestaurantRejectedMessagePublisher restaurantRejectedMessagePublisher;
+    private final OrderRejectedMessagePublisher restaurantRejectedMessagePublisher;
 
 
     public RestaurantApprovalRequestHelper(RestaurantDomainService restaurantDomainService,
                                            RestaurantDataMapper restaurantDataMapper,
                                            RestaurantRepository restaurantRepository,
-                                           OrderApprovalRepository orderApprovalRepository, OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener, RestaurantRejectedMessagePublisher restaurantRejectedMessagePublisher) {
+                                           OrderApprovalRepository orderApprovalRepository, OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener, OrderRejectedMessagePublisher restaurantRejectedMessagePublisher) {
         this.restaurantDomainService = restaurantDomainService;
         this.restaurantDataMapper = restaurantDataMapper;
         this.restaurantRepository = restaurantRepository;
