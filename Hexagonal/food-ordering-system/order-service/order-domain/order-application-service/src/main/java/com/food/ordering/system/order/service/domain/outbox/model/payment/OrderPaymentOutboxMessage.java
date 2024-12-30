@@ -25,4 +25,19 @@ public class OrderPaymentOutboxMessage {
     private OutboxStatus outboxStatus;
     private int version;
 
+    public void setProcessedAt(ZonedDateTime processedAt) {
+        this.processedAt = processedAt;
+    }
+
+    public void setSagaStatus(SagaStatus sagaStatus) {
+        this.sagaStatus = sagaStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public void setOutboxStatus(OutboxStatus outboxStatus) {
+        this.outboxStatus = outboxStatus;
+    }
 }
