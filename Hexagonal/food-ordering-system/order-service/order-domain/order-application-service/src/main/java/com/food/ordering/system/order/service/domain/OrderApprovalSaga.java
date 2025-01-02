@@ -4,7 +4,6 @@ import com.food.ordering.system.domain.event.EmptyEvent;
 import com.food.ordering.system.order.service.domain.dto.message.RestaurantApprovalResponse;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
-import com.food.ordering.system.order.service.domain.ports.outport.message.publisher.payment.OrderCancelledPaymentRequestMessagePublisher;
 import com.food.ordering.system.saga.SagaStep;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -12,16 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Component
-public class OrderApprovalSaga implements SagaStep<RestaurantApprovalResponse, EmptyEvent , OrderCancelledEvent> {
+public class OrderApprovalSaga implements SagaStep<RestaurantApprovalResponse> {
 
     private final OrderDomainService orderDomainService;
     private final OrderSagaHelper orderSagaHelper;
-    private final OrderCancelledPaymentRequestMessagePublisher  orderCancelledPaymentRequestMessagePublisher;
 
-    public OrderApprovalSaga(OrderDomainService orderDomainService, OrderSagaHelper orderSagaHelper, OrderCancelledPaymentRequestMessagePublisher orderCancelledPaymentRequestMessagePublisher) {
+    public OrderApprovalSaga(OrderDomainService orderDomainService, OrderSagaHelper orderSagaHelper) {
         this.orderDomainService = orderDomainService;
         this.orderSagaHelper = orderSagaHelper;
-        this.orderCancelledPaymentRequestMessagePublisher = orderCancelledPaymentRequestMessagePublisher;
     }
 
 
