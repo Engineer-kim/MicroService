@@ -140,4 +140,3 @@ public class OrderPaymentSaga implements SagaStep<PaymentResponse> {
         return orderApprovalOutboxMessage;
     }
 }
-}
