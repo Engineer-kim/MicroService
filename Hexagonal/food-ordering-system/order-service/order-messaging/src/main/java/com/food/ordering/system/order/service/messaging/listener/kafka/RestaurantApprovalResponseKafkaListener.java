@@ -25,9 +25,7 @@ public class RestaurantApprovalResponseKafkaListener implements KafkaConsumer<Re
     private final RestaurantApprovalResponseMessageListener restaurantApprovalResponseMessageListener;
     private final OrderMessagingDataMapper orderMessagingDataMapper;
 
-    public RestaurantApprovalResponseKafkaListener(RestaurantApprovalResponseMessageListener
-                                                           restaurantApprovalResponseMessageListener,
-                                                   OrderMessagingDataMapper orderMessagingDataMapper) {
+    public RestaurantApprovalResponseKafkaListener(RestaurantApprovalResponseMessageListener restaurantApprovalResponseMessageListener,OrderMessagingDataMapper orderMessagingDataMapper) {
         this.restaurantApprovalResponseMessageListener = restaurantApprovalResponseMessageListener;
         this.orderMessagingDataMapper = orderMessagingDataMapper;
     }
