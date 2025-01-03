@@ -25,26 +25,25 @@ public class PaymentRequestMessageListenerImpl implements PaymentRequestMessageL
 
     @Override
     public void completePayment(PaymentRequest paymentRequest) {
-       PaymentEvent payment = paymentRequestHelper.persistPayment(paymentRequest);
-       fireEvent(payment);
+       paymentRequestHelper.persistPayment(paymentRequest);
+       //fireEvent(payment);
     }
 
 
     @Override
     public void cancelPayment(PaymentRequest paymentRequest) {
-        PaymentEvent payment = paymentRequestHelper.persistCancelPayment(paymentRequest);
-        fireEvent(payment);
+        paymentRequestHelper.persistCancelPayment(paymentRequest);
     }
 
-    private void fireEvent(PaymentEvent paymentEvent) {
-        paymentEvent.fire();
-//        if(paymentEvent instanceof PaymentCompletedEvent) {
-//            paymentCompletedMessagePublisher.publish((PaymentCompletedEvent) paymentEvent);
-//        } else if(paymentEvent instanceof PaymentCancelledEvent) {
-//            paymentCancelledMessagePublisher.publish((PaymentCancelledEvent) paymentEvent);
-//        } else if(paymentEvent instanceof PaymentFailedEvent) {
-//            paymentFailedMessagePublisher.publish((PaymentFailedEvent) paymentEvent);
-//        }
-    }
+//    private void fireEvent(PaymentEvent paymentEvent) {
+//        paymentEvent.fire();
+////        if(paymentEvent instanceof PaymentCompletedEvent) {
+////            paymentCompletedMessagePublisher.publish((PaymentCompletedEvent) paymentEvent);
+////        } else if(paymentEvent instanceof PaymentCancelledEvent) {
+////            paymentCancelledMessagePublisher.publish((PaymentCancelledEvent) paymentEvent);
+////        } else if(paymentEvent instanceof PaymentFailedEvent) {
+////            paymentFailedMessagePublisher.publish((PaymentFailedEvent) paymentEvent);
+////        }
+//    }
 }
 
