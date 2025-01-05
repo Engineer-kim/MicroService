@@ -6,8 +6,6 @@ import com.food.ordering.system.restaurant.service.domain.entity.Restaurant;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovalEvent;
 import com.food.ordering.system.restaurant.service.domain.exception.RestaurantNotFoundException;
 import com.food.ordering.system.restaurant.service.domain.mapper.RestaurantDataMapper;
-import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderApprovedMessagePublisher;
-import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderRejectedMessagePublisher;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.OrderApprovalRepository;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.RestaurantRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -27,31 +25,25 @@ public class RestaurantApprovalRequestHelper {
     private final RestaurantDataMapper restaurantDataMapper;
     private final RestaurantRepository restaurantRepository;
     private final OrderApprovalRepository orderApprovalRepository;
-    private final OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener;
-    private final OrderRejectedMessagePublisher restaurantRejectedMessagePublisher;
 
-
-    public RestaurantApprovalRequestHelper(RestaurantDomainService restaurantDomainService,
-                                           RestaurantDataMapper restaurantDataMapper,
-                                           RestaurantRepository restaurantRepository,
-                                           OrderApprovalRepository orderApprovalRepository, OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener, OrderRejectedMessagePublisher restaurantRejectedMessagePublisher) {
+    public RestaurantApprovalRequestHelper(RestaurantDomainService restaurantDomainService, RestaurantDataMapper restaurantDataMapper, RestaurantRepository restaurantRepository, OrderApprovalRepository orderApprovalRepository) {
         this.restaurantDomainService = restaurantDomainService;
         this.restaurantDataMapper = restaurantDataMapper;
         this.restaurantRepository = restaurantRepository;
         this.orderApprovalRepository = orderApprovalRepository;
-        this.restaurantApprovalRequestMessageListener = restaurantApprovalRequestMessageListener;
-        this.restaurantRejectedMessagePublisher = restaurantRejectedMessagePublisher;
     }
+//    private final OrderApprovedMessagePublisher restaurantApprovalRequestMessageListener;
+//    private final OrderRejectedMessagePublisher restaurantRejectedMessagePublisher;
+
+
+
 
     @Transactional
     public OrderApprovalEvent persistOrderApproval(RestaurantApprovalRequest restaurantApprovalRequest) {
         log.info("Processing restaurant approval for order id: {}", restaurantApprovalRequest.getOrderId());
         List<String> failureMessages = new ArrayList<>();
         Restaurant restaurant = findRestaurant(restaurantApprovalRequest);
-        OrderApprovalEvent orderApprovalEvent =
-                restaurantDomainService.validateOrder(restaurant, failureMessages,
-                        restaurantApprovalRequestMessageListener,
-                        restaurantRejectedMessagePublisher);
+        OrderApprovalEvent orderApprovalEvent = restaurantDomainService.validateOrder(restaurant, failureMessages);
         orderApprovalRepository.save(restaurant.getOrderApproval());
         return orderApprovalEvent;
     }

@@ -10,15 +10,7 @@ import java.util.List;
 //거절
 public class OrderRejectedEvent extends OrderApprovalEvent {
 
-    private final DomainEventPublisher<OrderRejectedEvent> orderRejectedEventDomainEventPublisher;
-
-    public OrderRejectedEvent(OrderApproval orderApproval, RestaurantId restaurantId, List<String> failureMessages, ZonedDateTime createdAt, DomainEventPublisher<OrderRejectedEvent> orderRejectedEventDomainEventPublisher) {
+    public OrderRejectedEvent(OrderApproval orderApproval, RestaurantId restaurantId, List<String> failureMessages, ZonedDateTime createdAt) {
         super(orderApproval, restaurantId, failureMessages, createdAt);
-        this.orderRejectedEventDomainEventPublisher = orderRejectedEventDomainEventPublisher;
-    }
-
-    @Override
-    public void fire() {
-        orderRejectedEventDomainEventPublisher.publish(this);
     }
 }

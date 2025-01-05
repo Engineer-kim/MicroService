@@ -18,24 +18,18 @@ import static com.food.ordering.system.domain.DomainConstants.UTC;
 public class RestaurantDomainServiceImpl implements RestaurantDomainService {
 
     @Override
-    public OrderApprovalEvent validateOrder(Restaurant restaurant, List<String> failureMessages , DomainEventPublisher<OrderApprovedEvent> orderApprovedEventDomainEventPublisher , DomainEventPublisher<OrderRejectedEvent> orderRejectedEventDomainEventPublisher) {
+    public OrderApprovalEvent validateOrder(Restaurant restaurant, List<String> failureMessages) {
         restaurant.validateOrder(failureMessages);
         log.info("Validating order with id: {}", restaurant.getOrderDetail().getId().getValue());
 
         if (failureMessages.isEmpty()) {
             log.info("성공이여 OrderAPproval 성공");
             restaurant.constructOrderApproval(OrderApprovalStatus.APPROVED);
-            return new OrderApprovedEvent(restaurant.getOrderApproval(),
-                    restaurant.getId(),
-                    failureMessages,
-                    ZonedDateTime.now(ZoneId.of(UTC)), orderApprovedEventDomainEventPublisher);
+            return new OrderApprovedEvent(restaurant.getOrderApproval(), restaurant.getId(), failureMessages, ZonedDateTime.now(ZoneId.of(UTC)));
         } else {
             log.info("오더 거절:" + restaurant.getOrderDetail().getId().getValue());
             restaurant.constructOrderApproval(OrderApprovalStatus.REJECTED);
-            return new OrderRejectedEvent(restaurant.getOrderApproval(),
-                    restaurant.getId(),
-                    failureMessages,
-                    ZonedDateTime.now(ZoneId.of(UTC)) ,orderRejectedEventDomainEventPublisher);
+            return new OrderRejectedEvent(restaurant.getOrderApproval(), restaurant.getId(), failureMessages, ZonedDateTime.now(ZoneId.of(UTC)));
         }
     }
 }

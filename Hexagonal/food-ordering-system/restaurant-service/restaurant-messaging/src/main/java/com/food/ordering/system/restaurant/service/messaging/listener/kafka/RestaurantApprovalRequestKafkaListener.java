@@ -26,14 +26,12 @@ public class RestaurantApprovalRequestKafkaListener implements KafkaConsumer<Res
     }
 
     @Override
-    @KafkaListener(id = "${kafka-consumer-config.restaurant-approval-consumer-group-id}",
-            topics = "${restaurant-service.restaurant-approval-request-topic-name}")
+    @KafkaListener(id = "${kafka-consumer-config.restaurant-approval-consumer-group-id}", topics = "${restaurant-service.restaurant-approval-request-topic-name}")
     public void receive(@Payload List<RestaurantApprovalRequestAvroModel> messages,
                         @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) List<String> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION_ID) List<Integer> partitions,
                         @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
-        log.info("{} number of orders approval requests received with keys {}, partitions {} and offsets {}" + ", sending for restaurant approval",
-                messages.size(), keys.toString(), partitions.toString(), offsets.toString());
+        log.info("{} number of orders approval requests received with keys {}, partitions {} and offsets {}" + ", sending for restaurant approval", messages.size(), keys.toString(), partitions.toString(), offsets.toString());
 
         messages.forEach(restaurantApprovalRequestAvroModel -> {
             log.info("Processing order approval for order id: {}", restaurantApprovalRequestAvroModel.getOrderId());
