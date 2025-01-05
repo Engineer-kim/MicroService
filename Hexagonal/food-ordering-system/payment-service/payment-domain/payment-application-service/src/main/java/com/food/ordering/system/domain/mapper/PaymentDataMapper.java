@@ -1,6 +1,7 @@
 package com.food.ordering.system.domain.mapper;
 
 import com.food.ordering.system.domain.dto.PaymentRequest;
+import com.food.ordering.system.domain.outbox.model.OrderEventPayload;
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.OrderId;
