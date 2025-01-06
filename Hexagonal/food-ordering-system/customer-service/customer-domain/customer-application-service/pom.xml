@@ -3,19 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.food.ordering.system</groupId>
-        <artifactId>customer-service</artifactId>
+        <artifactId>customer-domain</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>customer-domain</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>customer-application-service</artifactId>
+    <packaging>jar</packaging>
 
-    <name>customer-domain</name>
+    <name>customer-application-service</name>
     <url>http://maven.apache.org</url>
-    <modules>
-        <module>customer-application-service</module>
-        <module>customer-domain-core</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

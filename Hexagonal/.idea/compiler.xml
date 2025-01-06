@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common-application" />
+        <module name="customer-application-service" />
         <module name="kafka-model" />
         <module name="kafka-consumer" />
         <module name="payment-messaging" />
@@ -26,7 +27,6 @@
         <module name="restaurant-application-service" />
         <module name="common-dataaccess" />
         <module name="customer-messaging" />
-        <module name="customer-domain" />
         <module name="order-application-service" />
         <module name="kafka-producer" />
         <module name="kafka-config-data" />
@@ -36,6 +36,7 @@
         <module name="restaurant-dataaccess" />
         <module name="payment-container" />
         <module name="customer-application" />
+        <module name="customer-domain-core" />
         <module name="restaurant-messaging" />
       </profile>
     </annotationProcessing>
@@ -47,9 +48,11 @@
       <module name="common-dataaccess" options="-parameters" />
       <module name="common-domain" options="-parameters" />
       <module name="customer-application" options="-parameters" />
+      <module name="customer-application-service" options="-parameters" />
       <module name="customer-container" options="-parameters" />
       <module name="customer-dataaccess" options="-parameters" />
       <module name="customer-domain" options="-parameters" />
+      <module name="customer-domain-core" options="-parameters" />
       <module name="customer-messaging" options="-parameters" />
       <module name="customer-service" options="-parameters" />
       <module name="food-ordering-system" options="-parameters" />
