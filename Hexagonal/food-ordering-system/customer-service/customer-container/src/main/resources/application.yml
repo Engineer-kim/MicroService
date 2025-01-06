@@ -2,7 +2,7 @@ server:
   port: 8184
 
 customer-service:
-  customer-topic-name: customer
+  customer-topic-name: customer #customer-domain > customer-application-service 모듈내의 Config 클래스 파일내의 토픽이름과 동일
 
 spring:
   jpa:
