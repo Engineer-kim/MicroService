@@ -6,7 +6,13 @@
     <file url="file://$PROJECT_DIR$/food-ordering-system/common/common-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/customer-service/customer-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/customer-service/customer-container/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/customer-service/customer-dataaccess/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/customer-service/customer-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/customer-service/customer-messaging/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/customer-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/food-ordering-system/customer-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/infrastructure/kafka/kafka-config-data/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/infrastructure/kafka/kafka-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/food-ordering-system/infrastructure/kafka/kafka-model/src/main/java" charset="UTF-8" />
