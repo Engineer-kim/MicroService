@@ -16,8 +16,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private final CustomerJpaRepository customerJpaRepository;
     private final CustomerDataAccessMapper customerDataAccessMapper;
 
-    public CustomerRepositoryImpl(CustomerJpaRepository customerJpaRepository,
-                                  CustomerDataAccessMapper customerDataAccessMapper) {
+    public CustomerRepositoryImpl(CustomerJpaRepository customerJpaRepository, CustomerDataAccessMapper customerDataAccessMapper) {
         this.customerJpaRepository = customerJpaRepository;
         this.customerDataAccessMapper = customerDataAccessMapper;
     }
@@ -30,7 +29,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Transactional
     @Override
     public Customer save(Customer customer) {
-        return customerDataAccessMapper.customerEntityToCustomer(
-                customerJpaRepository.save(customerDataAccessMapper.customerToCustomerEntity(customer)));
+        return customerDataAccessMapper.customerEntityToCustomer(customerJpaRepository.save(customerDataAccessMapper.customerToCustomerEntity(customer)));
     }
 }
